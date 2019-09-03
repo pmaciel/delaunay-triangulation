@@ -1,7 +1,13 @@
-#define CATCH_CONFIG_MAIN
+#include <cassert>
+#include <iostream>
 #include <random>
-#include <catch2/catch.hpp>
+
 #include "delaunay.h"
+
+#define REQUIRE assert
+#define TEST_CASE(case, label) std::cout << label << ": " <<  case << std::endl;
+
+int main() {
 
 TEST_CASE( "Delaunay triangulation should be able to triangulate 3 points as double", "[DelaunayTest]" ) {
     std::vector<Vector2> points;
@@ -43,3 +49,7 @@ TEST_CASE("Delaunay triangulation should be able to handle 10000 points as doubl
     Delaunay triangulation;
     const std::vector<Triangle> triangles = triangulation.triangulate(points);
 }
+
+    return 0;
+}
+
